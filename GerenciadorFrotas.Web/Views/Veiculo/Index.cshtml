@@ -1,0 +1,51 @@
+﻿@model IEnumerable<GerenciadorFrotas.Model.Veiculo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Gerenciar</h2>
+
+<p>
+    @Html.ActionLink("Inserir um veículo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Chassi)
+        </th>
+        <th>
+            @Html.DisplayName("Tipo de veículo")
+        </th>
+        <th>
+            @Html.DisplayName("Número de passageiros")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cor)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Chassi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoVeiculo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroPassageiros)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cor)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { chassi=item.Chassi }) |
+            @Html.ActionLink("Detalhe", "Details", new { chassi = item.Chassi }) |
+            @Html.ActionLink("Excluir", "Delete", new { chassi = item.Chassi })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,54 @@
+﻿@model GerenciadorFrotas.Model.Veiculo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalhe</h2>
+
+@{ if (string.IsNullOrEmpty((string)ViewBag.Message))
+    {
+        <div>
+            <h4>Veículo</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Chassi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Chassi)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TipoVeiculo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TipoVeiculo, "Tipo de veículo")
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.NumeroPassageiros)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NumeroPassageiros, "Número de passageiros")
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Cor)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Cor)
+                </dd>
+
+            </dl>
+        </div>
+    }
+}
+<p>
+    @Html.ActionLink("Editar", "Edit", new { chassi = Model.Chassi }) |
+    @Html.ActionLink("Voltar para a listagem", "Index")
+</p>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2C18770A-50E6-415D-ACF7-B53414499960}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GerenciadorFrotas.Negocio</RootNamespace>
+    <AssemblyName>GerenciadorFrotas.Negocio</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="VeiculoNegocio.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GerenciadorFrota.Interface.Data\GerenciadorFrota.Interface.Data.csproj">
+      <Project>{85FA5D04-0273-4B45-86DE-AC125ACB206B}</Project>
+      <Name>GerenciadorFrota.Interface.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GerenciadorFrota.Interface.Negocio\GerenciadorFrota.Interface.Negocio.csproj">
+      <Project>{192b2f5c-1521-4ab7-b033-489c2a60bc9d}</Project>
+      <Name>GerenciadorFrota.Interface.Negocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GerenciadorFrotas.Data\GerenciadorFrota.Data.csproj">
+      <Project>{59F5C489-357A-472A-8A72-25493B754D70}</Project>
+      <Name>GerenciadorFrota.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GerenciadorFrotas.Model\GerenciadorFrota.Model.csproj">
+      <Project>{70BEED75-B449-40DF-B439-62FC174CFD4C}</Project>
+      <Name>GerenciadorFrota.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
