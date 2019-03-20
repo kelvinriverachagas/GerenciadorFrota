@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using GerenciadorFrota.Interface.Negocio;
-using GerenciadorFrotas.Model;
-using GerenciadorFrotas.Model.Enum;
-using GerenciadorFrotas.Negocio;
-using GerenciadorFrotas.Web.Data;
+using GerenciadorFrotas.Models;
 
 namespace GerenciadorFrotas.Web.Controllers
 {
@@ -45,15 +35,12 @@ namespace GerenciadorFrotas.Web.Controllers
         //public ActionResult Create([Bind(Include = "Id,Chassi,TipoVeiculo,NumeroPassageiros,Cor")] Veiculo veiculo)
         public ActionResult Create([Bind(Include = "Id,Chassi,TipoVeiculo,NumeroPassageiros,Cor")] Veiculo veiculo)
         {
-            if (ModelState.IsValid)
-            {
-                var retorno = _negocio.Salvar(veiculo);
+            var retorno = _negocio.Salvar(veiculo);
 
-                if (retorno.Item1)
-                    return RedirectToAction("Index");
-                else
-                    ModelState.AddModelError(string.Empty, retorno.Item2);
-            }
+            if (retorno.Item1)
+                return RedirectToAction("Index");
+            else
+                ModelState.AddModelError(string.Empty, retorno.Item2);
 
             return View(veiculo);
         }
@@ -72,15 +59,13 @@ namespace GerenciadorFrotas.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Chassi,TipoVeiculo,NumeroPassageiros,Cor")] Veiculo veiculo)
         {
-            if (ModelState.IsValid)
-            {
-                var retorno = _negocio.Editar(veiculo);
+            var retorno = _negocio.Editar(veiculo);
 
-                if (string.IsNullOrEmpty(retorno))
-                    return RedirectToAction("Index");
+            if (string.IsNullOrEmpty(retorno))
+                return RedirectToAction("Index");
 
-                ModelState.AddModelError(string.Empty, retorno);
-            }
+            ModelState.AddModelError(string.Empty, retorno);
+
             return View(veiculo);
         }
 

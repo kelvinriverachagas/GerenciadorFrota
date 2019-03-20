@@ -1,9 +1,9 @@
 ﻿using System;
 using GerenciadorFrota.Interface.Data;
 using GerenciadorFrotas.Data.Repository;
-using GerenciadorFrotas.Model;
 using GerenciadorFrotas.Model.Enum;
 using GerenciadorFrotas.Negocio;
+using GerenciadorFrotas.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GerenciadorFrota.UnitTest

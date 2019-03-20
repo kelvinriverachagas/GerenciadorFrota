@@ -1,4 +1,4 @@
-﻿@model GerenciadorFrotas.Model.Veiculo
+﻿@model GerenciadorFrotas.Models.Veiculo
 
 @{
     ViewBag.Title = "Create";
@@ -17,16 +17,14 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Chassi, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Chassi, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Chassi, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Chassi, new { htmlAttributes = new { @class = "form-control text-danger" } })
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.TipoVeiculo, "Tipo de veículo", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EnumDropDownListFor(model => model.TipoVeiculo, htmlAttributes: new { @class = "form-control", @id = "txtTipoVeiculo", @onchange = "SelecionarNumPassageiros()" })
-            @Html.ValidationMessageFor(model => model.TipoVeiculo, "", new { @class = "text-danger" })
+            @Html.EnumDropDownListFor(model => model.TipoVeiculo, htmlAttributes: new { @class = "form-control", @id = "TipoVeiculo", @onchange = "SelecionarNumPassageiros()" })
         </div>
     </div>
 
@@ -34,15 +32,14 @@
         @Html.LabelFor(model => model.NumeroPassageiros, "Número de passageiros", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.NumeroPassageiros, new { htmlAttributes = new { @class = "form-control", @id = "NumeroPassageiros", @readonly = "readonly" } })
-            @Html.ValidationMessageFor(model => model.NumeroPassageiros, "", new { @class = "text-danger" })
+            
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Cor, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Cor, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Cor, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Cor, new { htmlAttributes = new { @class = "form-control", @id = "Cor" } })
         </div>
     </div>
 
@@ -59,13 +56,11 @@
 </div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
 
 <script>
     function SelecionarNumPassageiros() {
-        var num = $('#txtTipoVeiculo').val();
+        var num = $('#TipoVeiculo').val();
         $("#NumeroPassageiros").val(num);
     }
 </script>

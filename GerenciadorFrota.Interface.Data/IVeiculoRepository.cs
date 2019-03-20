@@ -1,4 +1,4 @@
-﻿using GerenciadorFrotas.Model;
+﻿using GerenciadorFrotas.Models;
 using System.Collections.Generic;
 
 namespace GerenciadorFrota.Interface.Data

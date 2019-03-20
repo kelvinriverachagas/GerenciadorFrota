@@ -1,8 +1,7 @@
 ﻿using GerenciadorFrota.Interface.Data;
-using GerenciadorFrotas.Model;
-using GerenciadorFrotas.Web.Context;
+using GerenciadorFrotas.Model.Enum;
+using GerenciadorFrotas.Models;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 
 namespace GerenciadorFrotas.Data.Repository
@@ -12,7 +11,10 @@ namespace GerenciadorFrotas.Data.Repository
         public VeiculoRepository()
         {
             if (Session._veiculos == null)
+            {
                 Session._veiculos = new List<Veiculo>();
+                PopularLista();
+            }
         }
 
         public void Salvar(Veiculo veiculo)
@@ -45,6 +47,23 @@ namespace GerenciadorFrotas.Data.Repository
         {
             Veiculo veiculo = BuscarPorChassi(chassi);
             Session._veiculos.Remove(veiculo);
+        }
+
+        private void PopularLista()
+        {
+            Veiculo veiculo = new Veiculo();
+            veiculo.Chassi = "123456789";
+            veiculo.TipoVeiculo = TipoVeiculo.Caminhao;
+            veiculo.NumeroPassageiros = 2;
+            veiculo.Cor = "Azul";
+            Session._veiculos.Add(veiculo);
+
+            veiculo = new Veiculo();
+            veiculo.Chassi = "987654321";
+            veiculo.TipoVeiculo = TipoVeiculo.Onibus;
+            veiculo.NumeroPassageiros = 42;
+            veiculo.Cor = "Verde";
+            Session._veiculos.Add(veiculo);
         }
     }
 }

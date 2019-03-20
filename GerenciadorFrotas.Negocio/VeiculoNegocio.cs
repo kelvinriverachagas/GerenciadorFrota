@@ -1,7 +1,6 @@
 ﻿using GerenciadorFrota.Interface.Data;
 using GerenciadorFrota.Interface.Negocio;
-using GerenciadorFrotas.Data.Repository;
-using GerenciadorFrotas.Model;
+using GerenciadorFrotas.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +46,7 @@ namespace GerenciadorFrotas.Negocio
             try
             {
                 if (string.IsNullOrEmpty(veiculo.Chassi) ||
-                    string.IsNullOrEmpty(veiculo.NumeroPassageiros.ToString()) ||
+                    veiculo.NumeroPassageiros <= 0 ||
                     string.IsNullOrEmpty(veiculo.Cor))
                     return new Tuple<bool, string>(false, "Campos obrigatórios devem ser preenchidos");
             }
@@ -95,6 +94,9 @@ namespace GerenciadorFrotas.Negocio
 
             try
             {
+                if (string.IsNullOrEmpty(veiculo.Cor))
+                    mensagem = "O campo Cor deve ser preenchido";
+
                 if (_repositorio.ExisteVeiculoChassi(veiculo.Chassi))
                     _repositorio.Atualizar(veiculo);
                 else
